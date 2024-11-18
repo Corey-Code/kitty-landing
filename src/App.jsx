@@ -86,7 +86,7 @@ const App = () => {
             <a
               href="https://dexscreener.com/solana/gjghk4jujtroxznzwfpfhhugditvxxwmio1a5qxnzjpf"
               target="_blank"
-              className="size-12 p-1.5 bg-[#111116] rounded-xl overflow-hidden"
+              className="size-14 p-1.5 bg-[#111116] rounded-xl overflow-hidden"
             >
               <img
                 src="/dexscreener.png"
@@ -98,7 +98,7 @@ const App = () => {
             <a
               href="https://photon-sol.tinyastro.io/en/lp/8hah9PBQcpLueTHYWuyUt1s48MivGPfxrNRgh5zMspE7?handle=822099e7b8f306d36517d"
               target="_blank"
-              className="size-12 rounded-xl overflow-hidden"
+              className="size-14 rounded-xl overflow-hidden"
             >
               <img src="/photon.jpeg" alt="photon sol" className="size-full" />
             </a>
