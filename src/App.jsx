@@ -75,7 +75,7 @@ const App = () => {
           </p>
 
           <p className="slide-item">
-            Fair launch, doxxed dev, no KOLs, presales, just fair launch
+            Fair launch, doxxed dev, KITTY is the KOL, presales, just fair launch
           </p>
         </div>
 
