@@ -5,3 +5,20 @@
 body {
   @apply bg-black text-white;
 }
+.primaryBtn {
+  cursor: pointer;
+  padding: 13px 25px;
+  border: none;
+  color: white;
+  background: #512da8;
+  transition: all 0.25s ease;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  pointer-events: auto
+
+}
+
+.primaryBtn:hover {
+  box-shadow: 0 10px 20px -10px rgba(24, 90, 219, 0.6);
+}
