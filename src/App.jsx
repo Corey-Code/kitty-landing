@@ -1,12 +1,10 @@
 import gsap from "gsap";
 import React, {useEffect, useRef, useState} from "react";
 
-import {
-    WalletMultiButton
-} from '@solana/wallet-adapter-react-ui';
-import InputModal from "./components/inputmodal/inputmodal"
+import InputModal from "./components/inputmodal/inputmodal";
 
 const App = () => {
+
     const [hasCopied, setHasCopied] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -53,7 +51,7 @@ const App = () => {
                     <p className="text-lg sm:text-xl xl:text-2xl slide-item">
                         Official Meme coin of Vidulum App
                     </p>
-                    <WalletMultiButton/>
+
                     <div>
                         <button className="primaryBtn" onClick={() => setIsOpen(true)}>
                             Bridge

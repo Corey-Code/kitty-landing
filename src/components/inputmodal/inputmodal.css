@@ -20,7 +20,7 @@
 
 .modal {
     width: 250px;
-    height: 170px;
+    height: 315px;
     background: white;
     color: white;
     z-index: 10;
@@ -127,4 +127,17 @@
     box-shadow: none;
     transform: none;
     background: whitesmoke;
+}
+
+.osmosis {
+    cursor: pointer;
+    padding: 13px 25px;
+    border: none;
+    color: white;
+    background: #512da8;
+    transition: all 0.25s ease;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 4px;
+    pointer-events: auto;
 }
