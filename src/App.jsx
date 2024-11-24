@@ -77,18 +77,19 @@ const App = () => {
                                 <img src="/clipboard.svg" alt="copy" className="w-5"/>
                             </button>
                         )}
+
                     </div>
 
                     <p className="slide-item mb-2">
-                        <span className="text-[#b3b3b3]">Max Supply: </span>1 Billion
+                        <span className="text-[#b3b3b3]">Max Supply: </span> <s>1 Billion</s> 979,000,000 Million
                     </p>
 
                     <p className="slide-item">
-                        KITTY is deflationary asset so supply will only go down
+                        KITTY is a deflationary asset by design.
                     </p>
 
                     <p className="slide-item">
-                        Fair launch, doxxed dev, KITTY is the KOL, presales, just fair launch
+                        Fair & Transparent Launch, Doxxed Dev (<a href="https://x.com/corey_code">corey_code</a>) building our home.
                     </p>
                 </div>
 
@@ -114,6 +115,38 @@ const App = () => {
                             className="size-14 rounded-xl overflow-hidden"
                         >
                             <img src="/photon.jpeg" alt="photon sol" className="size-full"/>
+                        </a>
+
+                        <a
+                            href="https://jup.ag"
+                            target="_blank"
+                            className="size-14 rounded-xl overflow-hidden"
+                        >
+                            <span className="text-lg sm:text-xl xl:text-2xl slide-item">
+                        Soon
+                    </span><img src="/jupag-logo.png" alt="jup sol" className="size-full"/>
+                        </a>
+                    </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                    <p className="xl:text-lg slide-item">Coming soon:</p>
+
+                    <div className="flex gap-3 slide-item">
+                        <a
+                            href="https://raydium.io"
+                            target="_blank"
+                            className="size-14 rounded-xl overflow-hidden"
+                        >
+                            <img src="/raydium-logo.jpeg" alt="raydium sol" className="size-full"/>
+                        </a>
+
+                        <a
+                            href="https://jup.ag"
+                            target="_blank"
+                            className="size-14 rounded-xl overflow-hidden"
+                        >
+                           <img src="/jupag-logo.png" alt="jup sol" className="size-full"/>
                         </a>
                     </div>
                 </div>
