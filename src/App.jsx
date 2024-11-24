@@ -51,7 +51,7 @@ const App = () => {
 
           <div>
             <button className='primaryBtn' onClick={() => setIsOpen(true)}>
-              Bridge
+              Bridge (swoon)
             </button>
             {isOpen && <InputModal setIsOpen={setIsOpen} />}
           </div>
@@ -81,12 +81,12 @@ const App = () => {
             <s>1 Billion</s> 979,000,000 Million
           </p>
 
-          <p className='slide-item'>.</p>
-
           <p className='slide-item'>
-            $KITTY is a deflationary by design with a Fair Moonshot Launch,
-            Doxxed Dev (<a href='https://x.com/corey_code'>corey_code</a>)
-            building our home.
+            <span className='text-[#b3b3b3]'>History: </span> Born from Corey
+            the Founder of Vidulum.app, $KITTY is designed for rapid community
+            engagement and long-term perks. With a fair launch via Moonshot,
+            this cute $KITTY captures the attention of meme maxi's by providing
+            a Burn 2 Earn Treasury.
           </p>
         </div>
 
@@ -141,6 +141,16 @@ const App = () => {
             </a>
           </div>
         </div>
+
+        <p className='slide-item mt-2'>
+          <h3 className='mb-1'>What's next for $KITTY?</h3>
+          <div>
+            <div>1. Bridge into the Cosmos & beyond</div>
+            <div>2. Establish LPs in each ecosystem</div>
+            <div>3. Form our DAO</div>
+            <div>4. Meow</div>
+          </div>
+        </p>
       </div>
 
       <img
