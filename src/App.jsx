@@ -50,9 +50,7 @@ const App = () => {
           </p>
 
           <div>
-            <button className='primaryBtn' onClick={() => setIsOpen(true)}>
-              Bridge (swoon)
-            </button>
+            <button className='primaryBtn'>Bridge (swoon)</button>
             {isOpen && <InputModal setIsOpen={setIsOpen} />}
           </div>
         </div>
