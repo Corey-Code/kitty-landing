@@ -1,8 +1,6 @@
 import gsap from 'gsap';
 import React, { useEffect, useRef, useState } from 'react';
 
-import InputModal from './components/inputmodal/inputmodal';
-
 const App = () => {
   const [hasCopied, setHasCopied] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -48,11 +46,6 @@ const App = () => {
           <p className='text-lg sm:text-xl xl:text-2xl slide-item'>
             Official Meme coin of Vidulum App
           </p>
-
-          <div>
-            <button className='primaryBtn'>Bridge (swoon)</button>
-            {isOpen && <InputModal setIsOpen={setIsOpen} />}
-          </div>
         </div>
 
         <div className='xl:text-lg flex flex-col gap-2 -z-10'>
@@ -143,7 +136,7 @@ const App = () => {
         <p className='slide-item mt-2'>
           <h3 className='mb-1'>What's next for $KITTY?</h3>
           <div>
-            <div>1. Bridge into the Cosmos & beyond</div>
+            <div>1. Bridge into the Cosmos & Beyond</div>
             <div>2. Establish LPs in each ecosystem</div>
             <div>3. Form our DAO</div>
             <div>4. Meow</div>
