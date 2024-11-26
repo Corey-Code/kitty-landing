@@ -1,8 +1,6 @@
 import gsap from 'gsap';
 import React, { useEffect, useRef, useState } from 'react';
 
-import InputModal from './components/inputmodal/inputmodal';
-
 const App = () => {
   const [hasCopied, setHasCopied] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -48,13 +46,6 @@ const App = () => {
           <p className='text-lg sm:text-xl xl:text-2xl slide-item'>
             Official Meme coin of Vidulum App
           </p>
-
-          <div>
-            <button className='primaryBtn' onClick={() => setIsOpen(true)}>
-              Bridge
-            </button>
-            {isOpen && <InputModal setIsOpen={setIsOpen} />}
-          </div>
         </div>
 
         <div className='xl:text-lg flex flex-col gap-2 -z-10'>
@@ -81,12 +72,12 @@ const App = () => {
             <s>1 Billion</s> 979,000,000 Million
           </p>
 
-          <p className='slide-item'>.</p>
-
           <p className='slide-item'>
-            $KITTY is a deflationary by design with a Fair Moonshot Launch,
-            Doxxed Dev (<a href='https://x.com/corey_code'>corey_code</a>)
-            building our home.
+            <span className='text-[#b3b3b3]'>History: </span> Born from Corey
+            the Founder of Vidulum.app, $KITTY is designed for rapid community
+            engagement and long-term perks. With a fair launch via Moonshot,
+            this cute $KITTY captures the attention of meme maxi's by providing
+            a Burn 2 Earn Treasury.
           </p>
         </div>
 
