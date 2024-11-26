@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: LemonFont;
-  src: url(Lemon-Regular.ttf);
+  src: url(/src/assets/Lemon-Regular.ttf);
 }
 
 body {
