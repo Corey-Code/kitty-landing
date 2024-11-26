@@ -52,6 +52,7 @@ const SwapModal = ({ setIsSwapOpen }) => {
             {/*    </div>*/}
             {/*}*/}
 
+            <WalletMultiButton style={{ borderRadius: "16px" }} />
             <div style={{ marginTop: "20px" }}>
               <input
                 className="inputBox"
@@ -77,23 +78,6 @@ const SwapModal = ({ setIsSwapOpen }) => {
                   marginLeft: "3px",
                 }}
               />
-            </div>
-          </div>
-          <div className="modalActions">
-            <div className="actionsContainer">
-              <div style={{ marginTop: "20px" }}>
-                <button
-                  className="osmosis"
-                  onClick={() =>
-                    isConnected ? disconnect() : connect({ chainId: "osmosis" })
-                  }
-                >
-                  {isConnected ? "Disconnect" : "Connect Osmosis"}
-                </button>
-              </div>
-              {isConnected && (
-                <AddressDisplay address={account?.bech32Address} />
-              )}
             </div>
           </div>
         </div>
