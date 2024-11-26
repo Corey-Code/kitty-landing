@@ -1,5 +1,5 @@
 import React from "react";
-import "./inputmodal.css";
+import "./bridgemodal.css";
 import { RiCloseLine } from "react-icons/ri";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { wormhole } from "@wormhole-foundation/sdk";
@@ -21,7 +21,7 @@ const AddressDisplay = ({ address }) => {
   return <div style={{ marginTop: "5px" }}>Address: {shortAddress}</div>;
 };
 
-const InputModal = ({ setIsOpen }) => {
+const BridgeModal = ({ setIsBridgeOpen }) => {
   const { connection } = useConnection();
   const { publicKey } = useWallet();
   const { isConnected, data: account } = useAccount();
@@ -35,13 +35,13 @@ const InputModal = ({ setIsOpen }) => {
   };
   return (
     <>
-      <div className="darkBG" onClick={() => setIsOpen(false)} />
+      <div className="darkBG" onClick={() => setIsBridgeOpen(false)} />
       <div className="centered">
         <div className="modal">
           <div className="modalHeader">
             <h5 className="heading">Bridge</h5>
           </div>
-          <button className="closeBtn" onClick={() => setIsOpen(false)}>
+          <button className="closeBtn" onClick={() => setIsBridgeOpen(false)}>
             <RiCloseLine style={{ marginBottom: "0px" }} />
           </button>
           <div className="modalContent">
@@ -58,7 +58,7 @@ const InputModal = ({ setIsOpen }) => {
               <input
                 className="inputBox"
                 name="amount"
-                type="text"
+                type="number"
                 placeholder="Amount"
                 style={{
                   color: "#1a1f2e",
@@ -67,6 +67,7 @@ const InputModal = ({ setIsOpen }) => {
                 }}
               />
             </div>
+
             <div style={{ marginTop: "20px" }}>
               <button
                 className="osmosis"
@@ -83,12 +84,15 @@ const InputModal = ({ setIsOpen }) => {
             <div className="actionsContainer">
               <button
                 className="deleteBtn"
-                onClick={() => setIsOpen(false)}
+                onClick={() => setIsBridgeOpen(false)}
                 disabled={!(connection && isConnected)}
               >
                 Bridge
               </button>
-              <button className="cancelBtn" onClick={() => setIsOpen(false)}>
+              <button
+                className="cancelBtn"
+                onClick={() => setIsBridgeOpen(false)}
+              >
                 Cancel
               </button>
             </div>
@@ -99,4 +103,4 @@ const InputModal = ({ setIsOpen }) => {
   );
 };
 
-export default InputModal;
+export default BridgeModal;
