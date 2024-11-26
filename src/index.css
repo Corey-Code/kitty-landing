@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: LemonFont;
+  src: url(Lemon-Regular.ttf);
+}
+
 body {
   @apply bg-black text-white;
+  font-family: LemonFont;
 }
 .primaryBtn {
   cursor: pointer;
@@ -15,11 +21,9 @@ body {
   font-size: 16px;
   font-weight: 600;
   border-radius: 4px;
-  pointer-events: auto
-
+  pointer-events: auto;
 }
 
 .primaryBtn:hover {
   box-shadow: 0 10px 20px -10px rgba(24, 90, 219, 0.6);
 }
-
