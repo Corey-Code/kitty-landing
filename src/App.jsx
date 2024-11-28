@@ -69,7 +69,7 @@ const App = () => {
 
           <p className='slide-item mb-2'>
             <span className='text-[#b3b3b3]'>Max Supply: </span>{' '}
-            <s>1 Billion</s> 979,000,000 Million
+            <s>1 Billion</s> 900 Million
           </p>
 
           <p className='slide-item'>
@@ -104,15 +104,9 @@ const App = () => {
             >
               <img src='/photon.jpeg' alt='photon sol' className='size-full' />
             </a>
-          </div>
-        </div>
 
-        <div className='flex items-center gap-3'>
-          <p className='xl:text-lg slide-item'>Coming soon:</p>
-
-          <div className='flex gap-3 slide-item'>
             <a
-              href='https://raydium.io'
+              href='https://raydium.io/swap/?inputMint=sol&outputMint=GJghk4JujTRoxzNZwfpFHhUGDitVXxwMio1a5QxNZjPf'
               target='_blank'
               className='size-14 rounded-xl overflow-hidden'
             >
@@ -124,7 +118,7 @@ const App = () => {
             </a>
 
             <a
-              href='https://jup.ag'
+              href='https://jup.ag/swap/SOL-GJghk4JujTRoxzNZwfpFHhUGDitVXxwMio1a5QxNZjPf'
               target='_blank'
               className='size-14 rounded-xl overflow-hidden'
             >
