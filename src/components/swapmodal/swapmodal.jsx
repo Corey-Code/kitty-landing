@@ -190,7 +190,7 @@ const SwapModal = ({ setIsSwapOpen }) => {
             </div>
             {activate ?
                 <div>
-                  <p> Sol Balance : {solBalance} </p>
+                  <p> Sol Balance : {solBalance / (10 ** 9)} </p>
                 </div> :
                 <div>
                   <p> Kitty Balance : {kittyBalance} </p>
