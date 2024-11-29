@@ -1,17 +1,15 @@
-import {ComputeBudgetProgram, Connection, Keypair, PublicKey} from "@solana/web3.js";
+import {PublicKey} from "@solana/web3.js";
+import {TOKEN_PROGRAM_ID, getMint} from "@solana/spl-token";
 import {
-    buildSimpleTransaction,
     Liquidity,
-    LOOKUP_TABLE_CACHE,
     Token,
-    TOKEN_PROGRAM_ID,
     TokenAmount,
-    TxVersion
+    TxVersion,
+    buildSimpleTransaction, LOOKUP_TABLE_CACHE
 } from "@raydium-io/raydium-sdk";
-import {getMint} from "@solana/spl-token";
 import {getWalletAccounts} from "./global.js";
 
-export const buyToken = async (
+export const sellToken = async (
     connection,
     buyer,
     token_address,
@@ -20,7 +18,7 @@ export const buyToken = async (
     pool_key
 ) => {
     if (token_address.length <= 0 || base_amount <= 0) {
-        console.error("Error: [Buy Token] invalid argument iput!!!");
+        console.error("Error: [Sell Token] invalid argument iput!!!");
         return {result: false, value: undefined};
     }
 
@@ -56,7 +54,6 @@ export const buyToken = async (
             connection,
             buyer
         );
-        console.log('buyer', buyer)
 
         const {innerTransactions} = await Liquidity.makeSwapInstructionSimple({
             connection: connection,
@@ -65,13 +62,12 @@ export const buyToken = async (
                 tokenAccounts: wallet_token_accounts,
                 owner: buyer
             },
-            amountIn: quote_token_amount,
-            amountOut: base_token_amount,
+            amountIn: base_token_amount,
+            amountOut: quote_token_amount,
             fixedSide: "in",
             makeTxVersion: TxVersion.V0,
             computeBudgetConfig: {microLamports: 250000}
         });
-        console.log('innerTransaction', innerTransactions);
 
         const transactions = await buildSimpleTransaction({
             connection: connection,

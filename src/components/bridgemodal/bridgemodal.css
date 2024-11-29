@@ -20,7 +20,7 @@
 
 .modal {
   width: 275px;
-  height: 375px;
+  height: 400px;
   background: linear-gradient(135deg, #2d003e, #800080);
   color: white;
   z-index: 10;
