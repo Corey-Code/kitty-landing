@@ -76,8 +76,9 @@ const App = () => {
             <span className='text-[#b3b3b3]'>History: </span> Born from Corey
             the Founder of Vidulum.app, $KITTY is designed for rapid community
             engagement and long-term perks. With a fair launch via Moonshot,
-            this cute $KITTY captures the attention of meme maxi's by providing
-            a Burn 2 Earn Treasury.
+            this cute $KITTY captures the attention of meme maxi's, streamers, 
+            and podcast guru's with the 1st peer-2-peer donations platform for
+            you, The Creators.
           </p>
         </div>
 
