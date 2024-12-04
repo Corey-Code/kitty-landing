@@ -15,8 +15,8 @@ export const buyToken = async (
     connection,
     buyer,
     token_address,
-    base_amount,
     quote_amount,
+    base_amount,
     pool_key
 ) => {
     if (token_address.length <= 0 || base_amount <= 0) {
