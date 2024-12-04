@@ -148,8 +148,8 @@ const SwapModal = ({ setIsSwapOpen }) => {
         Array.isArray(result.value)
     ) {
       result.value[0].recentBlockhash = (await main_connection.getLatestBlockhash()).blockhash;
-      const txn = await signTransaction(result.value[0]);
-      const signature = await sendTransaction(txn, main_connection);
+      // const txn = await signTransaction(result.value[0]);
+      const signature = await sendTransaction(result.value[0], main_connection);
 
       alert(`Token Transfer Successfully Confirmed! 🎉 View on SolScan: https://solscan.io/tx/${signature}`);
     }
