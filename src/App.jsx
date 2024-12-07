@@ -1,9 +1,12 @@
 import gsap from 'gsap';
 import React, { useEffect, useRef, useState } from 'react';
+import BridgeModal from './components/bridgemodal/bridgemodal';
+import SwapModal from './components/swapmodal/swapmodal';
 
 const App = () => {
   const [hasCopied, setHasCopied] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isBridgeOpen, setIsBridgeOpen] = useState(false);
+  const [isSwapOpen, setIsSwapOpen] = useState(false);
 
   const cat = useRef();
 
@@ -46,6 +49,21 @@ const App = () => {
           <p className='text-lg sm:text-xl xl:text-2xl slide-item'>
             Official Meme coin of Vidulum App
           </p>
+          <div>
+            <button
+              className='primaryBtn'
+              onClick={() => setIsBridgeOpen(true)}
+            >
+              Bridge
+            </button>
+            {isBridgeOpen && <BridgeModal setIsBridgeOpen={setIsBridgeOpen} />}
+          </div>
+          <div>
+            <button className='primaryBtn' onClick={() => setIsSwapOpen(true)}>
+              Swap
+            </button>
+            {isSwapOpen && <SwapModal setIsSwapOpen={setIsSwapOpen} />}
+          </div>
         </div>
 
         <div className='xl:text-lg flex flex-col gap-2 -z-10'>
@@ -76,7 +94,7 @@ const App = () => {
             <span className='text-[#b3b3b3]'>History: </span> Born from Corey
             the Founder of Vidulum.app, $KITTY is designed for rapid community
             engagement and long-term perks. With a fair launch via Moonshot,
-            this cute $KITTY captures the attention of meme maxi's, streamers, 
+            this cute $KITTY captures the attention of meme maxi's, streamers,
             and podcast guru's with the 1st peer-2-peer donations platform for
             you, The Creators.
           </p>
