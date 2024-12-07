@@ -49,7 +49,7 @@ const App = () => {
           <p className='text-lg sm:text-xl xl:text-2xl slide-item'>
             Official Meme coin of Vidulum App
           </p>
-          <div>
+          {/* <div>
             <button
               className='primaryBtn'
               onClick={() => setIsBridgeOpen(true)}
@@ -57,7 +57,7 @@ const App = () => {
               Bridge
             </button>
             {isBridgeOpen && <BridgeModal setIsBridgeOpen={setIsBridgeOpen} />}
-          </div>
+          </div> */}
           <div>
             <button className='primaryBtn' onClick={() => setIsSwapOpen(true)}>
               Swap
