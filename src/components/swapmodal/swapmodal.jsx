@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import './swapmodal.css';
-import { RiCloseLine } from 'react-icons/ri';
-import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { Connection, PublicKey } from '@solana/web3.js';
-import { getAssociatedTokenAddress, TOKEN_PROGRAM_ID } from '@solana/spl-token';
-import { Buffer } from 'buffer';
-import { getAvailablePoolKeyAndPoolInfo } from '../../utils/getAvailablePoolKeyAndPoolInfo.js';
+import React, { useEffect, useState } from "react";
+import "./swapmodal.css";
+import { RiCloseLine } from "react-icons/ri";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { Connection, PublicKey } from "@solana/web3.js";
+import { getAssociatedTokenAddress, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { Buffer } from "buffer";
+import { getAvailablePoolKeyAndPoolInfo } from "../../utils/getAvailablePoolKeyAndPoolInfo.js";
 import {
   LIQUIDITY_STATE_LAYOUT_V4,
   MAINNET_PROGRAM_ID,
   Percent,
   Token,
-} from '@raydium-io/raydium-sdk';
-import { Market, MARKET_STATE_LAYOUT_V3 } from '@project-serum/serum';
+} from "@raydium-io/raydium-sdk";
+import { Market, MARKET_STATE_LAYOUT_V3 } from "@project-serum/serum";
 import {
   findProgramAddress,
   Liquidity,
   TokenAmount,
-} from '@raydium-io/raydium-sdk';
-import { buyToken } from '../../utils/buy_token.js';
-import { signSendWait } from '@wormhole-foundation/sdk';
-import { sellToken } from '../../utils/sell_token.js';
+} from "@raydium-io/raydium-sdk";
+import { buyToken } from "../../utils/buy_token.js";
+import { signSendWait } from "@wormhole-foundation/sdk";
+import { sellToken } from "../../utils/sell_token.js";
 
 const AddressDisplay = ({ address }) => {
   const shortenAddress = (address) => {
@@ -32,7 +32,7 @@ const AddressDisplay = ({ address }) => {
 
   const shortAddress = shortenAddress(address);
 
-  return <div style={{ marginTop: '5px' }}>Address: {shortAddress}</div>;
+  return <div style={{ marginTop: "5px" }}>Address: {shortAddress}</div>;
 };
 const solanaUrl = import.meta.env.VITE_SOLANA_URL;
 let main_connection = new Connection(solanaUrl);
@@ -68,9 +68,9 @@ const getSPLTokenAmount = async (ownerPubKey, token_address) => {
       return tokenAmount;
     } catch (error) {
       console.error(`DEBUG failed:`, error);
-      console.log('DEBUG ...Wait 5 seconds till retrying');
+      console.log("DEBUG ...Wait 5 seconds till retrying");
       await new Promise((resolve) => setTimeout(resolve, 5000));
-      console.log('DEBUG ...Retrying');
+      console.log("DEBUG ...Retrying");
     }
   }
 };
@@ -91,7 +91,7 @@ const SwapModal = ({ setIsSwapOpen }) => {
         const balance = await main_connection.getBalance(publicKey);
         const _kittyBalance = await getSPLTokenAmount(
           publicKey,
-          'GJghk4JujTRoxzNZwfpFHhUGDitVXxwMio1a5QxNZjPf'
+          "GJghk4JujTRoxzNZwfpFHhUGDitVXxwMio1a5QxNZjPf"
         );
 
         setSolBalance(balance);
@@ -104,12 +104,12 @@ const SwapModal = ({ setIsSwapOpen }) => {
     const computeSolAmount = async (in_out, base_amount, slippage) => {
       const base_token = new Token(
         TOKEN_PROGRAM_ID,
-        new PublicKey('GJghk4JujTRoxzNZwfpFHhUGDitVXxwMio1a5QxNZjPf'),
+        new PublicKey("GJghk4JujTRoxzNZwfpFHhUGDitVXxwMio1a5QxNZjPf"),
         9
       );
       const quote_token = new Token(
         TOKEN_PROGRAM_ID,
-        new PublicKey('So11111111111111111111111111111111111111112'),
+        new PublicKey("So11111111111111111111111111111111111111112"),
         9
       );
       const { poolKeys, poolInfo } = await getAvailablePoolKeyAndPoolInfo(
@@ -125,7 +125,7 @@ const SwapModal = ({ setIsSwapOpen }) => {
           poolInfo: poolInfo,
           amountIn: new TokenAmount(quote_token, base_amount, false),
           currencyOut: base_token,
-          slippage: new Percent(slippage, 100),
+          slippage: new Percent(slippage, 10),
         });
         // console.log('amountOut', Number(minAmountOut.toExact()) );
         setOutAmount(Number(minAmountOut.toExact()));
@@ -135,15 +135,22 @@ const SwapModal = ({ setIsSwapOpen }) => {
           poolInfo: poolInfo,
           amountIn: new TokenAmount(base_token, base_amount, false),
           currencyOut: quote_token,
-          slippage: new Percent(slippage, 100),
+          slippage: new Percent(slippage, 10),
         });
         // console.log('amountOut', Number(minAmountOut.toExact()));
         setOutAmount(Number(minAmountOut.toExact()));
       }
     };
     computeSolAmount(activate, amount, 0);
-  }, [amount, activate]);
+  }, [amount]);
 
+  useEffect(() => {
+    setAmount(0);
+  }, [activate]);
+
+  const formattedOutAmount = (amount) => {
+    return amount < 1e-6 ? "0" : amount.toFixed(6);
+  };
   const onSwap = async () => {
     let result;
     const { poolKeys, poolInfo } = await getAvailablePoolKeyAndPoolInfo(
@@ -153,7 +160,7 @@ const SwapModal = ({ setIsSwapOpen }) => {
       result = await buyToken(
         main_connection,
         publicKey,
-        'GJghk4JujTRoxzNZwfpFHhUGDitVXxwMio1a5QxNZjPf',
+        "GJghk4JujTRoxzNZwfpFHhUGDitVXxwMio1a5QxNZjPf",
         amount,
         outAmount,
         poolKeys
@@ -162,17 +169,17 @@ const SwapModal = ({ setIsSwapOpen }) => {
       result = await sellToken(
         main_connection,
         publicKey,
-        'GJghk4JujTRoxzNZwfpFHhUGDitVXxwMio1a5QxNZjPf',
+        "GJghk4JujTRoxzNZwfpFHhUGDitVXxwMio1a5QxNZjPf",
         amount,
         outAmount,
         poolKeys
       );
     }
-    console.log('DEBUG result', result);
+    console.log("DEBUG result", result);
     if (result.result !== true) {
       alert(`Error: failed to create buy token transaction`);
     }
-    if (typeof result.value !== 'string' && Array.isArray(result.value)) {
+    if (typeof result.value !== "string" && Array.isArray(result.value)) {
       result.value[0].recentBlockhash = (
         await main_connection.getLatestBlockhash()
       ).blockhash;
@@ -186,16 +193,28 @@ const SwapModal = ({ setIsSwapOpen }) => {
   };
   return (
     <>
-      <div className='darkBG' onClick={() => setIsSwapOpen(false)} />
-      <div className='centered'>
-        <div className='modal'>
-          <div className='modalHeader'>
-            <h5 className='heading'>Swap</h5>
+      <div className="darkBG" onClick={() => setIsSwapOpen(false)} />
+      <div className="centered">
+        <div className="modal">
+          <div className="modalHeader">
+            <h5 className="heading">Swap</h5>
           </div>
-          <button className='closeBtn' onClick={() => setIsSwapOpen(false)}>
-            <RiCloseLine style={{ marginBottom: '0px' }} />
+          <div className={publicKey ? "walletBalance" : "hideBalance"}>
+            {activate ? (
+              <div>
+                <p> SOL: {solBalance / 10 ** 9} </p>
+              </div>
+            ) : (
+              <div>
+                <p> KITTY: {kittyBalance} </p>
+              </div>
+            )}
+          </div>
+
+          <button className="closeBtn" onClick={() => setIsSwapOpen(false)}>
+            <RiCloseLine style={{ marginBottom: "0px" }} />
           </button>
-          <div className='modalContent'>
+          <div className="modalContent mt-2">
             {/*{(connection && publicKey) ?*/}
 
             {/*    <div>*/}
@@ -203,50 +222,76 @@ const SwapModal = ({ setIsSwapOpen }) => {
             {/*    </div>*/}
             {/*}*/}
 
-            <WalletMultiButton style={{ borderRadius: '16px' }} />
-            <div>
-              <button className='deleteBtn' onClick={() => setActivate(true)}>
+            <WalletMultiButton style={{ borderRadius: "16px" }} />
+            {/* <div>
+              <button id="buyBtn" onClick={() => setActivate(true)}>
                 Buy
               </button>
-              <button className='deleteBtn' onClick={() => setActivate(false)}>
+              <button
+                id="sellBtn"
+                className="deleteBtn"
+                onClick={() => setActivate(false)}
+              >
                 Sell
               </button>
-            </div>
-            {activate ? (
-              <div>
-                <p> Sol Balance : {solBalance / 10 ** 9} </p>
+            </div> */}
+            <div className="swapContainer">
+              <div className="amountContainer">
+                <img
+                  className={activate ? "solImage" : "kittyImage"}
+                  src={activate ? "/solana.webp" : "/kitty.png"}
+                />
+                <input
+                  className="inputBox"
+                  name="number"
+                  type="text"
+                  placeholder="Amount"
+                  style={{
+                    color: "#1a1f2e",
+                    border: "1px solid",
+                    marginLeft: "3px",
+                  }}
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                />
               </div>
-            ) : (
-              <div>
-                <p> Kitty Balance : {kittyBalance} </p>
-              </div>
-            )}
 
-            <div style={{ marginTop: '20px' }}>
-              <input
-                className='inputBox'
-                name='number'
-                type='text'
-                placeholder='Amount'
-                style={{
-                  color: '#1a1f2e',
-                  border: '1px solid',
-                  marginLeft: '3px',
-                }}
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-              />
-            </div>
-            <div>
-              <p>
-                You will get {outAmount < 1e-6 ? '0' : outAmount.toFixed(6)}{' '}
-                {activate ? 'Kitty' : 'Sol'}
-              </p>
-            </div>
-            <div>
-              <button className='deleteBtn' onClick={() => onSwap()}>
-                Swap
-              </button>
+              <div>
+                <button
+                  className="swapIconBtn"
+                  onClick={() => {
+                    setActivate(!activate);
+                  }}
+                >
+                  <img src="/swapicon.png" />
+                </button>
+              </div>
+
+              <div className="outAmountContainer">
+                <img
+                  className={!activate ? "solImage" : "kittyImage"}
+                  src={!activate ? "/solana.webp" : "/kitty.png"}
+                />
+                <input
+                  className="inputBox"
+                  name="number"
+                  type="text"
+                  disabled
+                  placeholder="Amount"
+                  style={{
+                    color: "#1a1f2e",
+                    border: "1px solid",
+                    marginLeft: "3px",
+                  }}
+                  value={formattedOutAmount(outAmount)}
+                />
+              </div>
+
+              <div>
+                <button className="deleteBtn" onClick={() => onSwap()}>
+                  {activate ? "Buy" : "Sell"}
+                </button>
+              </div>
             </div>
           </div>
         </div>

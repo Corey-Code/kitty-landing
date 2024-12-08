@@ -49,13 +49,36 @@
   font-size: 20px;
   text-align: center;
 }
-
+.walletBalance {
+  width: 100%;
+  text-align: center;
+}
+.hideBalance {
+  display: none;
+}
 .modalContent {
-  padding: 10px;
   color: #f3f1f4;
   text-align: center;
   font-size: 16px;
   font-weight: 600;
+}
+.amountContainer {
+  margin-right: 10px;
+}
+.outAmountContainer {
+  margin-right: 10px;
+}
+.swapContainer {
+  margin-top: 20px;
+}
+.solImage {
+  display: inline;
+  width: 50px;
+}
+.kittyImage {
+  display: inline;
+  width: 50px;
+  padding-right: 8px;
 }
 .inputBox {
   border: 1px solid #d1d1d1;
@@ -64,6 +87,7 @@
   background-color: rgb(255, 255, 255);
   padding: 10px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 70%;
 }
 ::placeholder {
   color: rgba(128, 128, 128, 0.7);
@@ -108,7 +132,7 @@
 }
 
 .deleteBtn {
-  margin-top: 10px;
+  margin: 10px;
   cursor: pointer;
   font-weight: 500;
   padding: 11px 28px;
@@ -116,7 +140,7 @@
   font-size: 0.8rem;
   border: none;
   color: #fff;
-  background: #ff3e4e;
+  background: #512da8;
   transition: all 0.25s ease;
 }
 
@@ -125,6 +149,8 @@
 }
 
 .deleteBtn:hover {
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  transform: translate(-4px, 4px);
 }
 
 .cancelBtn {
@@ -144,6 +170,11 @@
   box-shadow: none;
   transform: none;
   background: whitesmoke;
+}
+.swapIconBtn {
+  height: 3em;
+  width: 3em;
+  margin-top: 10px;
 }
 
 .osmosis {
