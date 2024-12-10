@@ -22,6 +22,7 @@ import {
 import { buyToken } from "../../utils/buy_token.js";
 import { signSendWait } from "@wormhole-foundation/sdk";
 import { sellToken } from "../../utils/sell_token.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const AddressDisplay = ({ address }) => {
   const shortenAddress = (address) => {
@@ -84,6 +85,7 @@ const SwapModal = ({ setIsSwapOpen }) => {
   const [amount, setAmount] = useState(0);
   const [activate, setActivate] = useState(true);
   const [outAmount, setOutAmount] = useState(0);
+  const [txid, setTxid] = useState("");
 
   useEffect(() => {
     const fetchBalance = async () => {
@@ -185,10 +187,7 @@ const SwapModal = ({ setIsSwapOpen }) => {
       ).blockhash;
       // const txn = await signTransaction(result.value[0]);
       const signature = await sendTransaction(result.value[0], main_connection);
-
-      alert(
-        `Token Transfer Successfully Confirmed! 🎉 View on SolScan: https://solscan.io/tx/${signature}`
-      );
+      setTxid(signature);
     }
   };
   return (
@@ -229,7 +228,7 @@ const SwapModal = ({ setIsSwapOpen }) => {
               </button>
               <button
                 id="sellBtn"
-                className="deleteBtn"
+                className="secondaryBtn"
                 onClick={() => setActivate(false)}
               >
                 Sell
@@ -263,7 +262,10 @@ const SwapModal = ({ setIsSwapOpen }) => {
                     setActivate(!activate);
                   }}
                 >
-                  <img src="/swapicon.png" />
+                  <FontAwesomeIcon
+                    className="fa-rotate-90 fa-2x"
+                    icon="fa-solid fa-arrow-right-arrow-left"
+                  />
                 </button>
               </div>
 
@@ -288,9 +290,17 @@ const SwapModal = ({ setIsSwapOpen }) => {
               </div>
 
               <div>
-                <button className="deleteBtn" onClick={() => onSwap()}>
+                <button className="secondaryBtn" onClick={() => onSwap()}>
                   {activate ? "Buy" : "Sell"}
                 </button>
+              </div>
+              <div className={txid ? "showConfirmBtn" : "hideConfirmBtn"}>
+                <a href={`https://solscan.io/tx/${txid}`} target="_blank">
+                  <button className="txConfirmBtn">
+                    Success{" "}
+                    <FontAwesomeIcon icon="fa-solid fa-arrow-up-right-from-square" />
+                  </button>
+                </a>
               </div>
             </div>
           </div>

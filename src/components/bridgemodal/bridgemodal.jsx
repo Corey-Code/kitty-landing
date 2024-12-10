@@ -83,7 +83,7 @@ const BridgeModal = ({ setIsBridgeOpen }) => {
           <div className="modalActions">
             <div className="actionsContainer">
               <button
-                className="deleteBtn"
+                className="secondaryBtn"
                 onClick={() => setIsBridgeOpen(false)}
                 disabled={!(connection && isConnected)}
               >
