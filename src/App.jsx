@@ -2,11 +2,14 @@ import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import BridgeModal from "./components/bridgemodal/bridgemodal";
 import SwapModal from "./components/swapmodal/swapmodal";
+import Moonpay from "./components/moonpay/moonpay";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const App = () => {
   const [hasCopied, setHasCopied] = useState(false);
   const [isBridgeOpen, setIsBridgeOpen] = useState(false);
   const [isSwapOpen, setIsSwapOpen] = useState(false);
+  const [isMoonpayOpen, setIsMoonpayOpen] = useState(false);
 
   const cat = useRef();
 
@@ -64,6 +67,12 @@ const App = () => {
             </button>
             {isSwapOpen && <SwapModal setIsSwapOpen={setIsSwapOpen} />}
           </div>
+        </div>
+        {/* <div>
+          <Moonpay setIsMoonpayOpen={setIsMoonpayOpen} />
+        </div> */}
+        <div>
+          <Moonpay onClick={() => setIsMoonpayOpen(true)} />
         </div>
 
         <div className="xl:text-lg flex flex-col gap-2 -z-10">

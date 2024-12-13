@@ -5,7 +5,6 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { getAssociatedTokenAddress, TOKEN_PROGRAM_ID } from "@solana/spl-token";
-import { Buffer } from "buffer";
 import { getAvailablePoolKeyAndPoolInfo } from "../../utils/getAvailablePoolKeyAndPoolInfo.js";
 import {
   LIQUIDITY_STATE_LAYOUT_V4,
@@ -13,7 +12,6 @@ import {
   Percent,
   Token,
 } from "@raydium-io/raydium-sdk";
-import { Market, MARKET_STATE_LAYOUT_V3 } from "@project-serum/serum";
 import {
   findProgramAddress,
   Liquidity,
