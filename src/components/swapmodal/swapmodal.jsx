@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./swapmodal.css";
 import { RiCloseLine } from "react-icons/ri";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";

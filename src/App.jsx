@@ -2,11 +2,13 @@ import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import BridgeModal from "./components/bridgemodal/bridgemodal";
 import SwapModal from "./components/swapmodal/swapmodal";
+import Changelly from "./components/changelly/changelly";
 
 const App = () => {
   const [hasCopied, setHasCopied] = useState(false);
   const [isBridgeOpen, setIsBridgeOpen] = useState(false);
   const [isSwapOpen, setIsSwapOpen] = useState(false);
+  const [isChangellyOpen, setIsChangellyOpen] = useState(false);
 
   const cat = useRef();
 
@@ -63,6 +65,17 @@ const App = () => {
               Swap
             </button>
             {isSwapOpen && <SwapModal setIsSwapOpen={setIsSwapOpen} />}
+          </div>
+          <div>
+            <button
+              className="primaryBtn"
+              onClick={() => setIsChangellyOpen(true)}
+            >
+              Buy Crypto
+            </button>
+            {isChangellyOpen && (
+              <Changelly setIsChangellyOpen={setIsChangellyOpen} />
+            )}
           </div>
         </div>
 

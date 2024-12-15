@@ -1,4 +1,34 @@
 /* @src/components/Modal.module.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: LemonFont;
+  src: url(/src/assets/Lemon-Regular.ttf);
+}
+
+body {
+  @apply bg-black text-white;
+  font-family: LemonFont;
+}
+
+.primaryBtn {
+  cursor: pointer;
+  padding: 13px 25px;
+  border: none;
+  color: white;
+  background: #512da8;
+  transition: all 0.25s ease;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  pointer-events: auto;
+}
+
+.primaryBtn:hover {
+  box-shadow: 0 10px 20px -10px rgba(24, 90, 219, 0.6);
+}
 
 .darkBG {
   background-color: rgba(0, 0, 0, 0.75);
@@ -26,6 +56,20 @@
   z-index: 10;
   border-radius: 16px;
   box-shadow: 0 0px 10px 0 rgba(14, 14, 14, 0.724);
+}
+
+.changellyWidgetModal {
+  width: 400px;
+  height: 500px;
+}
+
+.changellyWidget {
+  height: 400px;
+  margin: 20px;
+}
+
+.innerWidget {
+  border-radius: 16px;
 }
 
 .modalHeader {

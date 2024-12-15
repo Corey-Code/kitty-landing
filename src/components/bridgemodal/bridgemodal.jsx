@@ -1,5 +1,4 @@
 import React from "react";
-import "./bridgemodal.css";
 import { RiCloseLine } from "react-icons/ri";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { wormhole } from "@wormhole-foundation/sdk";
